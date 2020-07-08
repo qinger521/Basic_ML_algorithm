@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 # 读取鸢尾花数据集
 data = pd.read_csv(r"iris.arff.csv") # 有一个参数header 表示第几行是标题行，如果数据集没有标题行则为None
@@ -93,3 +95,18 @@ print("真实结果：")
 print(np.asarray(test_y))
 print("准确率：")
 print(np.sum(result == test_y)/len(result))
+
+'''
+    KNN可视化显示
+'''
+
+# 使mpl支持中文显示
+mpl.rcParams["font.family"] = 'SinHei'
+# 防止使用中文负号
+mpl.rcParams["axes.unicode_minus"] = False
+
+# 由于有四个纬度，但在绘制散点图时，挑选其中两个纬度进行绘制
+plt.scatter(x=t0['sepallength'][:40],y=t0['petallength'][:40],color='r',label="Iris-virginica")
+plt.scatter(x=t1['sepallength'][:40],y=t1['petallength'][:40],color='b',label="Iris-setosa")
+plt.scatter(x=t2['sepallength'][:40],y=t2['petallength'][:40],color='g',label="Iris-versicolor")
+plt.show()
