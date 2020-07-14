@@ -59,7 +59,7 @@ train_y = t.iloc[:120,-1]
 test_X = t.iloc[120:,:-1]
 test_y = t.iloc[120:,-1]
 
-knn = KNN(6)
+knn = KNN(7)
 knn.fit(X=train_X,y=train_y)
 result = knn.predict(test_X)
 print("预测输出：")
